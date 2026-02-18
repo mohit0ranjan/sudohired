@@ -32,9 +32,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const isInterview = pathname.startsWith('/interview');
     const isLanding = pathname === '/';
+    const isAuth = pathname === '/login' || pathname === '/register';
 
-    // Landing page gets its own layout
-    if (isLanding) {
+    // Landing & Auth pages get their own layout (no sidebar)
+    if (isLanding || isAuth) {
         return (
             <div className="min-h-screen bg-background font-sans selection:bg-primary/20">
                 {children}
